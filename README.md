@@ -1,11 +1,11 @@
 # edge
-ai search on the edge 
+AI search on the edge 
 
 ## TODO List
 
 ### Search/storage size
-- [ ] Select basic rust ANN library and/or server
-  - [ ] Bundle and run locally
+- [x] Select basic rust ANN library and/or server: Using Qdrant for now
+  - [x] Bundle and run locally
 - [ ] Check if we need to Webassembly run on Cloudflare workers
 - [ ] Get Cloudflare account
 - [ ] Possible storage compression
