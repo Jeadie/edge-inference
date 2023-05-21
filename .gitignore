@@ -1,0 +1,8 @@
+# General Repo
+.idea
+
+# Rust worker
+/target
+**/*.rs.bk
+wasm-pack.log
+build/
