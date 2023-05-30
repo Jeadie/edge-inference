@@ -2,7 +2,7 @@ use worker::*;
 
 mod utils;
 mod handler;
-mod llm;
+mod model;
 
 #[event(fetch)]
 pub async fn main(req: Request, env: Env, _ctx: worker::Context) -> Result<Response> {
@@ -16,6 +16,7 @@ pub async fn main(req: Request, env: Env, _ctx: worker::Context) -> Result<Respo
     router
         .get("/", handler::get_base)
         .get("/worker-version", handler::get_worker_version)
+        .get("/model/:q", handler::test_model_inference)
         .run(req, env)
         .await
 }
