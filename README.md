@@ -1,6 +1,10 @@
 # edge
 AI search on the edge 
 
+## Issues I am tracking:
+- Seeing if I can use rustformers/llm for target="wasm32-unknown-unknown", https://github.com/rustformers/llm/issues/193
+- Problem with embeddings from rustformers/llm, https://github.com/rustformers/llm/issues/288
+
 ## TODO List
 
 ### Search/storage size
