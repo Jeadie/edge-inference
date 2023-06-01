@@ -1,11 +1,15 @@
 [package]
 name = "infima"
-version = "0.1.0"
+version = "0.2.0-dev"
 authors = ["jeadie"]
 edition = "2018"
 
 [lib]
 crate-type = ["cdylib", "rlib"]
+
+[[bin]]
+name = "infima"
+path = "src/embed.rs"
 
 [features]
 default = ["console_error_panic_hook"]
@@ -18,15 +22,11 @@ rand = "0.8.4"
 llm = { git = "https://github.com/rustformers/llm" , branch = "main" }
 llm-base = { git = "https://github.com/rustformers/llm" , branch = "main" }
 
-# https://docs.rs/getrandom/latest/getrandom/#webassembly-support
-getrandom = { version = "0.2", features = ["js"] }
+clap = { version = "4.1.8", features = ["derive"] }
 
-# The `console_error_panic_hook` crate provides better debugging of panics by
-# logging them with `console.error`. This is great for development, but requires
-# all the `std::fmt` and `std::panicking` infrastructure, so isn't great for
-# code size when deploying.
+
+getrandom = { version = "0.2", features = ["js"] }
 console_error_panic_hook = { version = "0.1.1", optional = true }
 
 [profile.release]
-# Tell `rustc` to optimize for small code size.
 opt-level = "s"

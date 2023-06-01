@@ -1,8 +1,12 @@
-use llm;
 use std::{convert::Infallible, path::Path};
+use llm;
+use llm_base::{self, Vocabulary};
+
+use crate::model;
+
 
 const DEFAULT_MODEL: &str = "bloom";
-const DEFAULT_PATH: &str = "ggml-model-bloomz-560m-f16-q4_0.bin";
+const DEFAULT_PATH: &str = "/Users/jeadie/Github/edge/model.bin"; // bloom-560m-q5_1-ggjt.bin";
 
 /// Create a LLM model based on 
 pub fn create_model(model: Option<&str>, path: Option<&str>, overrides_json: &str) -> Box<dyn llm::Model> {
@@ -16,23 +20,44 @@ pub fn create_model(model: Option<&str>, path: Option<&str>, overrides_json: &st
         Some(path) => Path::new(path),
         None => Path::new(DEFAULT_PATH),
     };
-    let overrides = serde_json::from_str(overrides_json).unwrap();
+    // let overrides: <llm::models::Bloom as llm::KnownModel>:: = serde_json::from_str(overrides_json).unwrap();
     let empty_progress_callback: Box<dyn FnMut(llm::LoadProgress)> = Box::new(|_: llm::LoadProgress| {});
+    
+    
+    println!("model name: {}", model_name);
+    println!("model arch: {}", model_architecture);
+    println!("model path: {}", model_path.display());
+    
+    let model_params = llm_base::ModelParameters {
+        prefer_mmap: true,
+        context_size: 4096,
+        lora_adapters: None
+    };
 
-    return  llm::load_dynamic(
-        model_architecture,
+    return Box::new(llm::load::<llm::models::Bloom>(
         model_path,
-        Default::default(),
-        overrides,
-        empty_progress_callback
-    )
-    .unwrap_or_else(|err| {
+        llm_base::VocabularySource::Model,
+        model_params,
+        empty_progress_callback,
+    ).unwrap_or_else(|err| {
         panic!("Failed to load {} model from {:?}: {}", model_architecture, model_path, err)
-    });
+    }));
+
+    // return llm::load_dynamic(
+    //     model_architecture,
+    //     model_path,
+    //     model_params,
+    //     overrides,
+    //     empty_progress_callback
+    // )
+    // .unwrap_or_else(|err| {
+    //     panic!("Failed to load {} model from {:?}: {}", model_architecture, model_path, err)
+    // });
 }
 
 /// Embed a string with a given model.
 pub fn embed(q: &str, model: Box<dyn llm::Model>) -> Result<Vec<f32>, Box<dyn std::error::Error>> {
+
 
     let mut output =  Default::default(); // OutputRequest
     
@@ -42,12 +67,15 @@ pub fn embed(q: &str, model: Box<dyn llm::Model>) -> Result<Vec<f32>, Box<dyn st
         }
     );
     let mut session = model.start_session(Default::default());
-    let res = session.infer::<Infallible>(model.as_ref(), &mut rand::thread_rng(), &llm::InferenceRequest {
+    let res = session.infer::<Infallible>(
+        model.as_ref(), &mut rand::thread_rng(), &llm::InferenceRequest {
         prompt: llm::Prompt::Text(q),
-        ..Default::default()
+        parameters: &Default::default(),
+        play_back_previous_tokens: false,
+        maximum_token_count: Some(1),
         },
          &mut output,
-         &mut feedback_fn
+         &mut feedback_fn,
     );
     return match res {
         Ok(_) => {
