@@ -19,8 +19,9 @@ cfg-if = "0.1.2"
 worker = "0.0.13"
 serde_json = "1.0.67"
 rand = "0.8.4"
-llm = { git = "https://github.com/rustformers/llm" , branch = "main" }
-llm-base = { git = "https://github.com/rustformers/llm" , branch = "main" }
+
+llm = { git = "https://github.com/skirodev/llm" , branch = "fix/embeddings_extraction_for_all_models" }
+llm-base = { git = "https://github.com/skirodev/llm" , branch = "fix/embeddings_extraction_for_all_models" }
 
 clap = { version = "4.1.8", features = ["derive"] }
 
