@@ -1,13 +1,12 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Debug, Serialize)]
 pub struct Document {
     id: Option<String>,
 
     #[serde(flatten)]
     extra: std::collections::HashMap<String, serde_json::Value>,
-
 }
 
 #[derive(Deserialize, Debug)]

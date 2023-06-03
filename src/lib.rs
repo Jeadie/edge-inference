@@ -5,6 +5,8 @@ mod handler;
 mod model;
 mod search;
 mod index;
+mod store;
+
 
 #[event(fetch)]
 pub async fn main(req: Request, env: Env, _ctx: worker::Context) -> Result<Response> {
