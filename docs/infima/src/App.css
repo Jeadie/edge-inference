@@ -1,0 +1,9 @@
+.App {
+  text-align: center;
+}
+
+/* Reset link styles */
+a {
+  color: inherit;
+  text-decoration: none;
+}
