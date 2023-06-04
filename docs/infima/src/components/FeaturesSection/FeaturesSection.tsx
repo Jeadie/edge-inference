@@ -1,23 +1,18 @@
 import React from 'react';
 import './FeaturesSection.css';
+import { placeholders } from '../../data/strings';
 
 const FeaturesSection: React.FC = () => {
   return (
     <section className="features-section">
-      <h2>Why Infima?</h2>
+      <h2>{placeholders.features.title}</h2>
       <div className="features-list">
-        <div className="feature-item">
-          <h3>Low Latency</h3>
-          <p>Thanks to edge computing, experience ultra low latency across the globe.</p>
-        </div>
-        <div className="feature-item">
-          <h3>Per Request Pricing</h3>
-          <p>Pay only for what you use. No more hourly rates.</p>
-        </div>
-        <div className="feature-item">
-          <h3>Edge Computing</h3>
-          <p>Decentralized and reliable processing power at your fingertips.</p>
-        </div>
+        {placeholders.features.featureItems.map((item, index) => (
+          <div className="feature-item" key={index}>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </div>
+        ))}
       </div>
     </section>
   );
