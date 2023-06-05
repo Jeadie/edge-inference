@@ -1,8 +1,8 @@
 export const placeholders = {
     hero: {
-      title: "Infima",
+      title: "Serverless Model Inference on the Edge",
       description:
-        "Hosted large language models with unprecedented speed and cost efficiency.",
+        ["Low-latency, per-request LLM inference"],
     },
     features: {
       title: "Why Infima?",

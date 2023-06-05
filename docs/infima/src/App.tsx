@@ -3,6 +3,7 @@ import './App.css';
 import HeroSection from './components/HeroSection/HeroSection';
 import FeaturesSection from './components/FeaturesSection/FeaturesSection';
 import CTASection from './components/CTASection/CTASection';
+import './styles/Global.css';
 
 function App() {
   return (
