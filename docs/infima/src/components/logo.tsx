@@ -4,20 +4,26 @@ interface LogoProps {
     backgroundColor: string;
     primaryColor: string;
     secondaryColor: string;
-    height: string;
-    width: string;
   }
   
-const Logo: React.FC<LogoProps> = ({ backgroundColor, secondaryColor, primaryColor, height, width }) => {
-return (  
+const Logo: React.FC<LogoProps> = ({ backgroundColor, secondaryColor, primaryColor }) => {
+    const logoGroupStyle = {
+        width: '90%',
+        height: '90%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      };
+
+    return (  
                                 // 'rgb(247, 247, 245)'
     <div className="logo-inner" style={{ backgroundColor: backgroundColor }}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        viewBox="0 0 1024 768"
-        height={height}
-        width={width}
+        viewBox="250 300 524 150"
+        height="100%"
+        width="100%"
         version="1.1"
       >
         <linearGradient spreadMethod="pad" y2="30%" x2="-10%" y1="120%" x1="30%" id="3d_gradient2-logo-5f8860d5-ff7c-4715-9ab0-bfc5d7fa60cf">
@@ -29,7 +35,7 @@ return (
           <stop id="stop342662" stopOpacity="1" stopColor="#cccccc" offset="50%" />
           <stop id="stop342664" stopOpacity="1" stopColor="#000000" offset="100%" />
         </linearGradient>
-        <g id="logo-group">
+        <g id="logo-group" style={logoGroupStyle}>
           <image xlinkHref="" id="container" x="272" y="144" width="480" height="480" transform="translate(0 0)" style={{ display: 'none' }} />
           <g id="logo-center" transform="translate(0 0)">
             <image xlinkHref="" id="icon_container" x="0" y="0" style={{ display: 'none' }} />

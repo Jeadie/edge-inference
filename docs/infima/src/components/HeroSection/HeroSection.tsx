@@ -1,13 +1,15 @@
 import React from 'react';
 import './HeroSection.css';
 import { placeholders } from '../../data/strings';
-import Logo from '../logo';
+import TopBar from '../TopBar';
 
 import styled from 'styled-components';
 
 export const HeroContainer = styled.section`
   height: 100vh; // Takes the full height of the viewport
-  display: flex;
+  (min-width: 800px) {
+    display: flex;
+  }
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -19,6 +21,7 @@ export const HeroContainer = styled.section`
 
 export const HeroTitle = styled.h1`
   font-size: 5em;
+  padding-top: 200px;
   padding-left: 200px;
   padding-right: 200px;
   color: var(--accent);
@@ -26,6 +29,7 @@ export const HeroTitle = styled.h1`
   @media only screen and (max-width: 800px) {
     font-size: 2em;
     padding-left: 30px;
+    padding-top: 20px;
     padding-right: 30px;
   }
 
@@ -41,7 +45,7 @@ export const HeroDescription = styled.h1`
 const HeroSection: React.FC = () => {
   return (
     <HeroContainer className="hero-section">
-      <Logo backgroundColor="rgba(0, 0, 0, 0)" primaryColor='#310900' secondaryColor='#ae7d54' height="384px" width="512px"/>
+      <TopBar />
       <HeroTitle>{placeholders.hero.title}</HeroTitle>
       {placeholders.hero.description.map((item, _) => (
         <HeroDescription>{item}</HeroDescription>

@@ -1,5 +1,5 @@
 
-/* 815D2A,AE7D54,A49893,46301D,9C3913 */ 
+/* 815D2A,AE7D54,A49893,9C3913,9C3913 */ 
 
 /*   #F1E9E4; */
 :root {
@@ -11,8 +11,10 @@
   --background2: linear-gradient(#FFFFFF, #FBF0DC 33%, #F8E2C3 66%, #EFCF95);
 
   /* linear-gradient(#FFFFFF 40%, #F9E6D4 75%, #F6DEBF 85%, #F2D6AA 90%, #EFCF95 92%, #ECC780 95%, #EAC170 97%, #E8BB60 98%, #E7B650); */
-
+  --button: #f5c542;
+  --button-hover: #9c7814;
   /* --background2: #E7B650; */
+  --banner: #bfbfbf49;
   --text: #000000; 
   /* #310900; *791701; */
 }
