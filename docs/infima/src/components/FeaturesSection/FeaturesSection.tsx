@@ -2,33 +2,36 @@ import React from 'react';
 import './FeaturesSection.css';
 import { placeholders } from '../../data/strings';
 import styled from 'styled-components';
+import FeatureCard from './FeatureCard';
 
 
 export const FeaturesContainer = styled.section`
-  height: 100vh; // Takes the full height of the viewport
+  height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   text-align: center;
   background: var(--background1);
-  color: var(--primary);
+  color: var(--accent);
   padding: 60px 0;
 `;
 
+const GridContainer = styled.div`
+  display: grid;
+  width: 70%;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); // This creates a responsive grid
+  gap: 20px; // The space between items
+`;
 
 const FeaturesSection: React.FC = () => {
   return (
     <FeaturesContainer className="features-section">
-      <h2>{placeholders.features.title}</h2>
-      <div className="features-list">
+      <GridContainer className="features-list">
         {placeholders.features.featureItems.map((item, index) => (
-          <div className="feature-item" key={index}>
-            <h3>{item.title}</h3>
-            <p>{item.description}</p>
-          </div>
+          <FeatureCard key={index} title={item.title} description={item.description}/>
         ))}
-      </div>
+      </GridContainer>
     </FeaturesContainer>
   );
 }

@@ -3,7 +3,14 @@
 
 /*   #F1E9E4; */
 :root {
-  --primary: #4a47a3;
+  --primary: #E7B650;
+  --primary2: #E8BB60;
+  --primary3: #EAC170;
+  --primary4: #ECC780;
+  --primary5: #EFCF95;
+  --primary6: #F2D6AA;
+  --primary7: #F6DEBF;
+  --primary8: #F9E6D4;
   --secondary: #9c8fd8;
   --accent: #000000;
   --background: linear-gradient(#E7B650, #E8BB60 2%, #EAC170 3%, #ECC780 5%, #EFCF95 8%, #F2D6AA 10%, #F6DEBF 15%, #F9E6D4 25%, #FFFFFF 60%);

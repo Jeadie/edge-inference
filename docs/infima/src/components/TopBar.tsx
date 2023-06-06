@@ -4,11 +4,10 @@ import Logo from './logo';
 
 const TopBarContainer = styled.div`
   display: flex;
-  width: '100%';
-  height: 1vh
-  @media only screen and (max-width: 800px) {
-    height: '2000px';
-  }
+  width: 90%;
+  height: 100px;
+  // @media only screen and (max-width: 800px) {
+  // }
   justify-content: space-between;
   align-items: center;
   padding: 0px;
@@ -17,7 +16,9 @@ const TopBarContainer = styled.div`
   margin: 20px;
   margin-bottom: 100px;
   background-color: var(--banner);
-  max-height: "100px";
+
+  position: fixed;
+  z-index: 100;
 `;
 
 
@@ -72,12 +73,20 @@ const Button: React.FC<ButtonProps> = ({ onClick, label }) => {
     );
 };
   
+const scroll_to_waitlist = () => {
+  const element = document.getElementById('waitlist');
+  if(element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  } else {
+    console.log("no element 'waitlist'")
+  }
+}
 
 const TopBar: React.FC = () => {
   return (
     <TopBarContainer>
       <Logo backgroundColor="rgba(0, 0, 0, 0)" primaryColor='#310900' secondaryColor='#ae7d54'/>
-      <Button label='Join the Waitlist'></Button>
+      <Button label='Join the Waitlist' onClick={scroll_to_waitlist}></Button>
     </TopBarContainer>
   );
 };

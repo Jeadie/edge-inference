@@ -1,8 +1,8 @@
 export const placeholders = {
     hero: {
-      title: "Serverless Model Inference on the Edge",
+      title: "Serverless Inference on the Edge",
       description:
-        ["Low-latency, per-request LLM inference"],
+        ["Low-latency, per-request, LLM model inference"],
     },
     features: {
       title: "Why Infima?",
@@ -24,9 +24,8 @@ export const placeholders = {
       ],
     },
     cta: {
-      title: "Join the Future of Language Processing",
-      description:
-        "Sign up now to join the Infima waitlist and be one of the first to experience the future of language models.",
+      title: "Join the Waitlist",
+      description: "Only email required",
     },
   };
   

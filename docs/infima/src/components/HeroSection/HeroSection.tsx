@@ -6,7 +6,7 @@ import TopBar from '../TopBar';
 import styled from 'styled-components';
 
 export const HeroContainer = styled.section`
-  height: 100vh; // Takes the full height of the viewport
+  height: 70vh; // Takes the full height of the viewport
   (min-width: 800px) {
     display: flex;
   }
@@ -17,13 +17,15 @@ export const HeroContainer = styled.section`
   color; var(--text);
   flex-direction: column;
   padding: 60px 0;
+  padding-top: 100px;
+
 `;
 
 export const HeroTitle = styled.h1`
   font-size: 5em;
   padding-top: 200px;
-  padding-left: 200px;
-  padding-right: 200px;
+  padding-left: 300px;
+  padding-right: 300px;
   color: var(--accent);
 
   @media only screen and (max-width: 800px) {
@@ -45,10 +47,9 @@ export const HeroDescription = styled.h1`
 const HeroSection: React.FC = () => {
   return (
     <HeroContainer className="hero-section">
-      <TopBar />
       <HeroTitle>{placeholders.hero.title}</HeroTitle>
-      {placeholders.hero.description.map((item, _) => (
-        <HeroDescription>{item}</HeroDescription>
+      {placeholders.hero.description.map((item, index) => (
+        <HeroDescription key={index}>{item}</HeroDescription>
       ))}
     </HeroContainer>
   );
