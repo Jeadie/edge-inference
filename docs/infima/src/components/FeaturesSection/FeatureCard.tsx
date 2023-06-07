@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import React from 'react';
+
 
 export const StyledFeatureCard = styled.div`
   display: flex;
@@ -25,18 +27,19 @@ export const FeatureDescription = styled.p`
   @media only screen and (max-width: 800px) {
     font-size: 1em;
   }
+  padding-bottom: 10px;
 `;
 
 interface FeatureCardProps {
     title: string;
-    description: string;
+    description: string[];
 }
   
 const FeatureCard: React.FC<FeatureCardProps> = ({ title, description }) => {
     return (
         <StyledFeatureCard>
             <FeatureTitle>{title}</FeatureTitle>
-            <FeatureDescription>{description}</FeatureDescription>
+              {description.map((v, i) => <FeatureDescription key={i} >{v}</FeatureDescription>)}
         </StyledFeatureCard>
     );
 };

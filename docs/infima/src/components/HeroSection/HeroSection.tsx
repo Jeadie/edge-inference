@@ -1,7 +1,6 @@
 import React from 'react';
 import './HeroSection.css';
 import { placeholders } from '../../data/strings';
-import TopBar from '../TopBar';
 
 import styled from 'styled-components';
 
@@ -9,6 +8,9 @@ export const HeroContainer = styled.section`
   height: 70vh; // Takes the full height of the viewport
   (min-width: 800px) {
     display: flex;
+  }
+  @media only screen and (max-width: 800px) {
+    height: 40vh
   }
   justify-content: center;
   align-items: center;
@@ -46,7 +48,7 @@ export const HeroDescription = styled.h1`
 
 const HeroSection: React.FC = () => {
   return (
-    <HeroContainer className="hero-section">
+    <HeroContainer id="hero-section" className="hero-section">
       <HeroTitle>{placeholders.hero.title}</HeroTitle>
       {placeholders.hero.description.map((item, index) => (
         <HeroDescription key={index}>{item}</HeroDescription>

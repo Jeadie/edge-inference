@@ -2,24 +2,27 @@ export const placeholders = {
     hero: {
       title: "Serverless Inference on the Edge",
       description:
-        ["Low-latency, per-request, LLM model inference"],
+        ["Edge-latency, per-request, LLM model inference"],
     },
     features: {
-      title: "Why Infima?",
       featureItems: [
         {
-          title: "Low Latency",
-          description:
-            "Thanks to edge computing, experience ultra low latency across the globe.",
+          title: "Local Latency, Cloud Convenience",
+          description: [
+            "Built on the Cloudfare edge network, the closest server to every computer",
+            "10x lower network delay. 10ms, not >100ms latency"
+          ]
         },
         {
-          title: "Per Request Pricing",
-          description: "Pay only for what you use. No more hourly rates.",
+          title: "$/request, not $/hour",
+          description: ["No more hourly rates", "Pay only for what you use."],
         },
         {
-          title: "Edge Computing",
-          description:
-            "Decentralized and reliable processing power at your fingertips.",
+          title: "HuggingFace Compatible",
+          description: [
+            "Use the libraries you love", 
+            "API compatibility for HuggingFace inference"
+          ],
         },
       ],
     },
@@ -27,5 +30,8 @@ export const placeholders = {
       title: "Join the Waitlist",
       description: "Only email required",
     },
+    waitlist: {
+      successfulSubmission: "You're on the list!"
+    }
   };
   

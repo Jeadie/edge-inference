@@ -1,14 +1,21 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import styled from 'styled-components';
 import { MaterialButton } from './TopBar';
+import posthog from 'posthog-js'
+import { placeholders } from '../data/strings';
+
+if (!window.location.host.includes('127.0.0.1') && !window.location.host.includes('localhost')) {
+  posthog.init('phc_kjCGgJEWCnSUQIg2poH5j9h34nmTXfOgxdAoiFJyZSb', { api_host: 'https://app.posthog.com' })
+}
+
 
 const organizationSizes = [
-    'Just Me :)',
-    '1-10',
+    'solo',
+    '2-5',
+    '5-10',
     '10-50',
-    '50-150',
-    '150-500',
-    '500+',
+    '50-100',
+    '50+',
 ];
 
 const models = [
@@ -50,6 +57,11 @@ const FormInput = styled.input`
     border-bottom: 2px solid #3f51b5;
   }
   margin-bottom: 10px
+
+  @media only screen and (max-width: 800px) {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 `;
 
 const FormSelect = styled.select`
@@ -62,14 +74,23 @@ const FormSelect = styled.select`
   }
   width: 100%;
   padding: 1em;
-  margin-bottom: 10px
+  margin-bottom: 10px;
    
+  @media only screen and (max-width: 800px) {
+    width: 95%;
+    margin-left: 10px;
+    // margin-right: 10px;
+  }
 `;
 
 const FormTextArea = styled.textarea`
     margin-top: 1px;
     margin-bottom: 10px;
     padding: 16.5px 14px;
+    @media only screen and (max-width: 800px) {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
 `;
 
 const CheckboxLabel = styled.label`
@@ -78,6 +99,9 @@ const CheckboxLabel = styled.label`
   padding-bottom: 5px;
   margin-left: 30px;
   text-align: left;
+`;
+
+const FormSubmitText = styled.h2`
 `;
 
 interface IFormState {
@@ -98,6 +122,7 @@ export const WaitlistForm = () => {
     otherModels: '',
     description: '',
   });
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -115,8 +140,36 @@ export const WaitlistForm = () => {
   
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log(form);
+    posthog.identify(form.email, {
+      distinctId: form.email,
+      properties: {
+        name: form.name,
+        email: form.email,
+        organizationSize: form.organizationSize,
+        modelsInterested: form.modelsInterested,
+        otherModels: form.otherModels,
+        description: form.description,
+      },
+    })
+    setIsSubmitted(true);
   };
+
+  const scroll_to_top = () => {
+    const element = document.getElementById('hero-section');
+    if(element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      console.log("b")
+      console.log("no element 'waitlist'")
+    }
+  }
+
+  if(isSubmitted) {
+    return (<div>
+      <FormSubmitText>{placeholders.waitlist.successfulSubmission}</FormSubmitText>
+        <MaterialButton type="submit" onClick={scroll_to_top}>Back to Top</MaterialButton>
+      </div>)
+  }
 
   return (
     <StyledForm onSubmit={handleSubmit}>
@@ -158,7 +211,7 @@ export const WaitlistForm = () => {
         name="otherModels"
         value={form.otherModels}
         onChange={handleChange}
-        placeholder="Model X, ..."
+        placeholder=""
       />
 
       <FormLabel>Tell us a bit more about what you're/wanting to build?</FormLabel>

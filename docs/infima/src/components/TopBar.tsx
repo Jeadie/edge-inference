@@ -7,6 +7,7 @@ const TopBarContainer = styled.div`
   width: 90%;
   height: 100px;
   // @media only screen and (max-width: 800px) {
+    
   // }
   justify-content: space-between;
   align-items: center;
@@ -45,7 +46,7 @@ export const MaterialButton = styled.button`
   @media only screen and (max-width: 800px) {
     min-width: 30px;
     padding: 3px 8px;
-    font-size: 0.4rem
+    font-size: 0.5rem
   }
 
   &:hover {
@@ -84,7 +85,7 @@ const scroll_to_waitlist = () => {
 
 const TopBar: React.FC = () => {
   return (
-    <TopBarContainer>
+    <TopBarContainer >
       <Logo backgroundColor="rgba(0, 0, 0, 0)" primaryColor='#310900' secondaryColor='#ae7d54'/>
       <Button label='Join the Waitlist' onClick={scroll_to_waitlist}></Button>
     </TopBarContainer>
