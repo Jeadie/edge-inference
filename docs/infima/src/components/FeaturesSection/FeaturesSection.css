@@ -1,0 +1,15 @@
+.features-section {
+    padding: 2em;
+  }
+  
+  .features-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .feature-item {
+    width: 30%;
+    margin: 1em;
+  }
+  

@@ -1,0 +1,9 @@
+{
+  "short_name": "Infima",
+  "name": "Cloudflare for the AI age",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#E7B650",
+  "background_color": "#ffffff"
+}
