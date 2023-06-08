@@ -41,9 +41,10 @@ export const HeroTitle = styled.h1`
 `;
 export const HeroDescription = styled.h1`
   font-size: 1em;
-  margin-bottom: -5px;
+  padding-bottom: 15px;
   margin-left: 10px;
   font-weight: normal;
+  
 `;
 
 const HeroSection: React.FC = () => {

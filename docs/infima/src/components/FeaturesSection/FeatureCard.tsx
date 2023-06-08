@@ -18,14 +18,20 @@ export const FeatureTitle = styled.h3`
   color: #333;
   font-size: 1.5em;
   @media only screen and (max-width: 800px) {
-    font-size: 1.2em;
+    font-size: 1.3em;
   }
 `;
+const DescriptionDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`
 
 export const FeatureDescription = styled.p`
   margin: 0;
   @media only screen and (max-width: 800px) {
-    font-size: 1em;
+    font-size: 0.9em;
   }
   padding-bottom: 10px;
 `;
@@ -39,7 +45,10 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, description }) => {
     return (
         <StyledFeatureCard>
             <FeatureTitle>{title}</FeatureTitle>
+            <DescriptionDiv >
               {description.map((v, i) => <FeatureDescription key={i} >{v}</FeatureDescription>)}
+            </DescriptionDiv>
+
         </StyledFeatureCard>
     );
 };

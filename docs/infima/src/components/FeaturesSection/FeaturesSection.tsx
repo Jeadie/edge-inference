@@ -22,6 +22,7 @@ const GridContainer = styled.div`
   width: 70%;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); // This creates a responsive grid
   gap: 20px; // The space between items
+  padding-bottom: 60px;
 `;
 
 const FeaturesSection: React.FC = () => {

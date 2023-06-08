@@ -11,9 +11,9 @@ const TopBarContainer = styled.div`
   // }
   justify-content: space-between;
   align-items: center;
-  padding: 0px;
+  // padding: 0px;
   padding-right: 20px;
-  padding-left: 20px;
+  // padding-left: 20px;
   margin: 20px;
   margin-bottom: 100px;
   background-color: var(--banner);

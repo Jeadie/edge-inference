@@ -5,7 +5,8 @@ import styled from 'styled-components';
 import { WaitlistForm } from '../WaitlistForm';
 
 export const CTAContainer = styled.section`
-  height: 100vh;
+  height: "auto"; 
+  100vh;
   display: flex;
   justify-content: center;
   align-items: center;

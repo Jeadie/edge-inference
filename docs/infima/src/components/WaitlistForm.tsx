@@ -31,6 +31,10 @@ const models = [
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
+  @media only screen and (max-width: 800px) {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
 `;
 
 const FormContainer = styled.form`
@@ -58,10 +62,10 @@ const FormInput = styled.input`
   }
   margin-bottom: 10px
 
-  @media only screen and (max-width: 800px) {
-    margin-left: 10px;
-    margin-right: 10px;
-  }
+  // @media only screen and (max-width: 800px) {
+  //   margin-left: 10px;
+  //   margin-right: 10px;
+  // }
 `;
 
 const FormSelect = styled.select`
@@ -76,21 +80,21 @@ const FormSelect = styled.select`
   padding: 1em;
   margin-bottom: 10px;
    
-  @media only screen and (max-width: 800px) {
-    width: 95%;
-    margin-left: 10px;
-    // margin-right: 10px;
-  }
+  // @media only screen and (max-width: 800px) {
+  //   width: 95%;
+  //   margin-left: 10px;
+  //   // margin-right: 10px;
+  // }
 `;
 
 const FormTextArea = styled.textarea`
     margin-top: 1px;
     margin-bottom: 10px;
     padding: 16.5px 14px;
-    @media only screen and (max-width: 800px) {
-      margin-left: 10px;
-      margin-right: 10px;
-    }
+    // @media only screen and (max-width: 800px) {
+    //   margin-left: 10px;
+    //   margin-right: 10px;
+    // }
 `;
 
 const CheckboxLabel = styled.label`
